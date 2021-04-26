@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_basic/route/CountDemo.dart';
 import 'package:flutter_basic/route/Douban.dart';
+import 'package:flutter_basic/route/HttpDemo.dart';
 
 void main() {
   runApp(MyApp());
@@ -75,19 +76,37 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget getItemContainer(String item) {
-    return new GestureDetector(
-      onTap: (){
+    return ElevatedButton(
+     child: Text(item),
+      style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Color(0xFF2196F3)),                //背景颜色
+          foregroundColor: MaterialStateProperty.all(Color(0xffffffff)),                //字体颜色
+          overlayColor: MaterialStateProperty.all(Color(0xffFFF8E5)),                   // 高亮色
+          shadowColor: MaterialStateProperty.all( Color(0xffffffff)),                  //阴影颜色
+          elevation: MaterialStateProperty.all(0),                                     //阴影值
+          textStyle: MaterialStateProperty.all(TextStyle(fontSize: 14)),                //字体
+          side: MaterialStateProperty.all(BorderSide(width: 1,color: Color(0xffffffff))),//边框
+          shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0))),//圆角弧度
+
+      ),
+      onPressed: () {
         _jumpInto(item);
       },
-      child: Container(
-        alignment: Alignment.center,
-        child: Text(
-          item,
-          style: TextStyle(color: Colors.white, fontSize: 20),
-        ),
-        color: Colors.blue,
-      ),
+
     );
+    // return new GestureDetector(
+    //   onTap: (){
+    //     _jumpInto(item);
+    //   },
+    //   child: Container(
+    //     alignment: Alignment.center,
+    //     child: Text(
+    //       item,
+    //       style: TextStyle(color: Colors.white, fontSize: 20),
+    //     ),
+    //     color: Colors.blue,
+    //   ),
+    // );
   }
 
   void _jumpInto(String text){
@@ -96,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
       case "DouBanList":
         Navigator.push( context,
             MaterialPageRoute(builder: (context) {
-              return DouBanListView();
+              return NetDioSimpleDemoPage();
             }));
         break;
       case "CountDemo":

@@ -2,6 +2,7 @@
     package="com.example.flutter_basic">
    <application
         android:label="flutter_basic"
+        android:networkSecurityConfig="@xml/network_security_config">
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
