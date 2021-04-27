@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_basic/route/CountDemo.dart';
 import 'package:flutter_basic/route/Douban.dart';
 import 'package:flutter_basic/route/HttpDemo.dart';
+import 'package:flutter_basic/route/Visibility.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,15 +23,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -63,9 +55,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<String> getDataList() {
     List<String> list = [];
-    list.add("DouBanList");
-    list.add("CountDemo");
-    list.add("value");
+    list.add("Http");
+    list.add("Count");
+    list.add("Visibility");
     list.add("value");
     list.add("value");
     return list;
@@ -112,23 +104,26 @@ class _MyHomePageState extends State<MyHomePage> {
   void _jumpInto(String text){
     print("jumpTo "+text);
     switch(text){
-      case "DouBanList":
+      case "Http":
         Navigator.push( context,
             MaterialPageRoute(builder: (context) {
               return NetDioSimpleDemoPage();
             }));
         break;
-      case "CountDemo":
+      case "Count":
         Navigator.push( context,
             MaterialPageRoute(builder: (context) {
               return CountDemo();
             }));
         break;
+      case "Visibility":
+        Navigator.push( context,
+            MaterialPageRoute(builder: (context) {
+              return OffstageDemo();
+            }));
+        break;
       default:
         break;
     }
-
-
-
   }
 }
