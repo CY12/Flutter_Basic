@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class OffstageDemo extends StatefulWidget{
+class OffstageDemo extends StatefulWidget {
   @override
   _OffstageDemoState createState() {
     // TODO: implement createState
@@ -8,11 +8,12 @@ class OffstageDemo extends StatefulWidget{
   }
 }
 
-class _OffstageDemoState extends State<OffstageDemo>{
+class _OffstageDemoState extends State<OffstageDemo> {
   bool _isShow = false;
   bool _visible = true;
   bool _saveSpace = false;
   bool _isInteractive = false;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -46,7 +47,7 @@ class _OffstageDemoState extends State<OffstageDemo>{
           SwitchListTile(
             title: Text('是否占用空间'),
             value: _saveSpace,
-            onChanged: (val) => setState((){
+            onChanged: (val) => setState(() {
               _saveSpace = val;
               // ignore: unnecessary_statements
               !_saveSpace && (_isInteractive = false);
@@ -55,18 +56,23 @@ class _OffstageDemoState extends State<OffstageDemo>{
           SwitchListTile(
             title: Text('隐藏后是否响应事件'),
             value: _isInteractive,
-            onChanged: (val) => setState((){
+            onChanged: (val) => setState(() {
               _isInteractive = val;
               // ignore: unnecessary_statements
               _isInteractive && (_saveSpace = true);
             }),
           ),
           Visibility(
-            visible: _visible,// 是否可见
-            maintainState: true,// 隐藏后是否位置组件状态
-            maintainAnimation: true,// 隐藏后是否维持子组件中的动画
-            maintainSize: _saveSpace,// 隐藏后所占空间是否释放
-            maintainInteractivity: _isInteractive,// 隐藏后是否能够照常响应事件
+            visible: _visible,
+            // 是否可见
+            maintainState: true,
+            // 隐藏后是否位置组件状态
+            maintainAnimation: true,
+            // 隐藏后是否维持子组件中的动画
+            maintainSize: _saveSpace,
+            // 隐藏后所占空间是否释放
+            maintainInteractivity: _isInteractive,
+            // 隐藏后是否能够照常响应事件
             child: GestureDetector(
               child: Container(
                 constraints: BoxConstraints.tight(Size(200.0, 100.0)),
@@ -91,7 +97,6 @@ class _OffstageDemoState extends State<OffstageDemo>{
         appBar: new AppBar(
           title: new Text("Visibility"),
         ),
-        body:body
-    );
+        body: body);
   }
 }

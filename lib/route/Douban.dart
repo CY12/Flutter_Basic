@@ -1,4 +1,3 @@
-
 import 'dart:convert' as Convert;
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -48,13 +47,13 @@ class DouBanState extends State<DouBanListView> {
       return CupertinoActivityIndicator();
     }
     return ListView.builder(
-      //item 的数量
+        //item 的数量
         itemCount: subjects.length,
         itemBuilder: (BuildContext context, int index) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              numberWidget(index+1),
+              numberWidget(index + 1),
               getItemContainerView(subjects[index]),
               //下面的灰色分割线
               Container(
@@ -114,7 +113,7 @@ class DouBanState extends State<DouBanListView> {
     return Container(
       decoration: BoxDecoration(
           image:
-          DecorationImage(image: NetworkImage(imgUrl), fit: BoxFit.cover),
+              DecorationImage(image: NetworkImage(imgUrl), fit: BoxFit.cover),
           borderRadius: BorderRadius.all(Radius.circular(5.0))),
       margin: EdgeInsets.only(left: 8, top: 3, right: 8, bottom: 3),
       height: itemHeight,
@@ -187,7 +186,7 @@ class DescWidget extends StatelessWidget {
         softWrap: true,
         textDirection: TextDirection.ltr,
         style:
-        TextStyle(fontSize: 16, color: Color.fromARGB(255, 118, 117, 118)),
+            TextStyle(fontSize: 16, color: Color.fromARGB(255, 118, 117, 118)),
       ),
     );
   }

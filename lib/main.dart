@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basic/route/AutoWidget.dart';
 import 'package:flutter_basic/route/CountDemo.dart';
 import 'package:flutter_basic/route/Douban.dart';
 import 'package:flutter_basic/route/HttpDemo.dart';
@@ -31,11 +32,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
-
-
     return GridView.count(
       //水平子Widget之间间距
       crossAxisSpacing: 10.0,
@@ -52,13 +50,12 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-
   List<String> getDataList() {
     List<String> list = [];
     list.add("Http");
     list.add("Count");
     list.add("Visibility");
-    list.add("value");
+    list.add("AutoWidget");
     list.add("value");
     return list;
   }
@@ -69,22 +66,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget getItemContainer(String item) {
     return ElevatedButton(
-     child: Text(item),
+      child: Text(item),
       style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Color(0xFF2196F3)),                //背景颜色
-          foregroundColor: MaterialStateProperty.all(Color(0xffffffff)),                //字体颜色
-          overlayColor: MaterialStateProperty.all(Color(0xffFFF8E5)),                   // 高亮色
-          shadowColor: MaterialStateProperty.all( Color(0xffffffff)),                  //阴影颜色
-          elevation: MaterialStateProperty.all(0),                                     //阴影值
-          textStyle: MaterialStateProperty.all(TextStyle(fontSize: 14)),                //字体
-          side: MaterialStateProperty.all(BorderSide(width: 1,color: Color(0xffffffff))),//边框
-          shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0))),//圆角弧度
-
+        backgroundColor: MaterialStateProperty.all(Color(0xFF2196F3)),
+        //背景颜色
+        foregroundColor: MaterialStateProperty.all(Color(0xffffffff)),
+        //字体颜色
+        overlayColor: MaterialStateProperty.all(Color(0xffFFF8E5)),
+        // 高亮色
+        shadowColor: MaterialStateProperty.all(Color(0xffffffff)),
+        //阴影颜色
+        elevation: MaterialStateProperty.all(0),
+        //阴影值
+        textStyle: MaterialStateProperty.all(TextStyle(fontSize: 14)),
+        //字体
+        side: MaterialStateProperty.all(
+            BorderSide(width: 1, color: Color(0xffffffff))),
+        //边框
+        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0))), //圆角弧度
       ),
       onPressed: () {
         _jumpInto(item);
       },
-
     );
     // return new GestureDetector(
     //   onTap: (){
@@ -101,26 +105,28 @@ class _MyHomePageState extends State<MyHomePage> {
     // );
   }
 
-  void _jumpInto(String text){
-    print("jumpTo "+text);
-    switch(text){
+  void _jumpInto(String text) {
+    print("jumpTo " + text);
+    switch (text) {
       case "Http":
-        Navigator.push( context,
-            MaterialPageRoute(builder: (context) {
-              return NetDioSimpleDemoPage();
-            }));
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return NetDioSimpleDemoPage();
+        }));
         break;
       case "Count":
-        Navigator.push( context,
-            MaterialPageRoute(builder: (context) {
-              return CountDemo();
-            }));
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return CountDemo();
+        }));
         break;
       case "Visibility":
-        Navigator.push( context,
-            MaterialPageRoute(builder: (context) {
-              return OffstageDemo();
-            }));
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return OffstageDemo();
+        }));
+        break;
+      case "AutoWidget":
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return GradientButtonRoute ();
+        }));
         break;
       default:
         break;

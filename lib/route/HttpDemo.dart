@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_basic/bean/PostListBean.dart';
@@ -67,10 +69,15 @@ class _NetDioSimpleDemoPageState extends State<NetDioSimpleDemoPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Image.network(
-                  postListBean.data[index].avatar,
-                  width: 38,
-                  height: 38,
+                InkWell(
+                  onTap: (){
+                    ToastUtils.toast(context,msg: "你点击"+index.toString()+"头像");
+                  },
+                  child: Image.network(
+                    postListBean.data[index].avatar,
+                    width: 38,
+                    height: 38,
+                  ),
                 ),
                 Container(
                   height: 38,
@@ -123,7 +130,25 @@ class _NetDioSimpleDemoPageState extends State<NetDioSimpleDemoPage> {
               )
           ],
         ));
+    Widget container =new ConstrainedBox(
+      constraints: BoxConstraints(
+        minWidth: double.infinity, //宽度尽可能大
+      ),
+      child: Container(
+          child: body,
+          color: Colors.white,
+      ),
+    );
+    Widget item = GestureDetector(
+      onTap: () {
+        //处理点击事件
+        print("GestureDetector");
+        ToastUtils.toast(context,msg: "你点击"+index.toString()+"item");
+      },
+      child: container,
+    );
 
-    return body;
+    return item;
   }
+
 }
